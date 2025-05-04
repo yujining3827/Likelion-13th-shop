@@ -8,4 +8,5 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     // 특정 가격보다 저렴한 상품 내림차순 정렬
     List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
+    List<Item> findByItemNameContainingIgnoreCase(String itemName);
 }

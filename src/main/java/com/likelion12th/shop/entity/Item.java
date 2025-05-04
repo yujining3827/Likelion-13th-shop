@@ -31,4 +31,7 @@ public class Item {
     private LocalDateTime createdBy;
     private LocalDateTime modifiedBy;
 
+    private String itemImg;
+    private String itemImgPath;
+
 }

@@ -17,12 +17,15 @@ public class ItemFormDto {
     @NotNull
     private String itemSellstatus;
 
+    private String itemImgPath;
+
     private static ModelMapper modelMapper = new ModelMapper();
 
     //Dto -> 엔티티 객체 변환을 위한 메서드
     public Item createItem(){
         return modelMapper.map(this, Item.class);
     }
-    public static ItemFormDto of (Item item) {return modelMapper.map(item, ItemFormDto.class);}
+    public static ItemFormDto of (Item item) {
+        return modelMapper.map(item, ItemFormDto.class);}
 }
 
