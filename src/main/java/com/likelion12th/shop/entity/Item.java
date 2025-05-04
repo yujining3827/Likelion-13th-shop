@@ -1,5 +1,6 @@
 package com.likelion12th.shop.entity;
 
+import com.likelion12th.shop.Exception.OutOfStockException;
 import com.likelion12th.shop.constant.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,8 +22,8 @@ public class Item {
     private Long id;
 
     private String itemName;
-    private String price;
-    private String stock;
+    private int price;
+    private int stock;
     private String itemDetail;
 
     @Enumerated(EnumType.STRING)
@@ -34,4 +35,20 @@ public class Item {
     private String itemImg;
     private String itemImgPath;
 
+
+    public void removeStock(int stock){
+        int restStock = this.stock - stock;
+        if (restStock < 0) {
+            throw new OutOfStockException("상품의 재고가 부족합니다. (현재 재고 수량:" + this.stock + ")");
+        }
+        this.stock = restStock;
+    }
+
+    public void addStock(int stock){
+        this.stock += stock;
+    }
 }
+
+
+
+
